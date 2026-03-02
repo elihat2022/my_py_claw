@@ -1,7 +1,7 @@
 import asyncio
 from app.infra.client import OpenRouterClient
-from app.core.factory import IAStrategyFactory
-from app.core.observers import ConsoleTokenObserver
+from app.core.domain.factory import IAStrategyFactory
+from app.core.ports.observers_port import ConsoleTokenObserver
 
 
 async def iniciar_bot_terminal():

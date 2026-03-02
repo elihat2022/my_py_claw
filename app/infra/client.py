@@ -1,9 +1,9 @@
 import os
 import httpx
 import json
-from app.core.strategies import IAStrategy
+from app.core.domain.strategies import IAStrategy
 from app.infra.decorators import response_cache
-from app.core.observers import TokenObserver
+from app.core.ports.observers_port import TokenObserver
 
 
 class OpenRouterClient:

@@ -1,4 +1,4 @@
-from app.core.strategies import IAStrategy, StrategyFastModel, StrategyCodeModel
+from app.core.domain.strategies import IAStrategy, StrategyFastModel, StrategyCodeModel
 
 class IAStrategyFactory:
 
