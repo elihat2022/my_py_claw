@@ -2,7 +2,7 @@ import os
 import httpx
 import json
 from app.core.domain.strategies import IAStrategy
-from app.infra.decorators import response_cache
+from app.adapters.secondary.cache.decorators import response_cache
 from app.core.ports.observers_port import TokenObserver
 
 
