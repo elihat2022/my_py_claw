@@ -42,10 +42,11 @@ class OpenRouterClient(IAProviderPort):
         payload = strategy.set_payload(prompt)
         response = await self.http_client.post(
             f"{self.base_url}/chat/completions",
-            json=payload
+            json=payload,
+            timeout=120.0 # Increase timeout for slow commands/models
         )
         data = response.json()
-        return data["choices"][0]["message"]["content"]
+        return data["choices"][0]["message"]
     
     async def generate_response_stream(self, strategy: IAStrategy, prompt: str):
         payload = strategy.set_payload(prompt)
@@ -54,7 +55,8 @@ class OpenRouterClient(IAProviderPort):
         async with self.http_client.stream(
             "POST",
             f"{self.base_url}/chat/completions",
-            json=payload
+            json=payload,
+            timeout=120.0 # Increase timeout for slow commands/models
         ) as response:
             async for line in response.aiter_lines():
                 if line.startswith("data: "):

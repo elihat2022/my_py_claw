@@ -4,7 +4,11 @@ _cache_memory = {}
 def response_cache(func):
 
     @functools.wraps(func)
-    async def wrapper(self, strategy, prompt):
+    async def wrapper(self, strategy, prompt=None):
+        if not prompt:
+            # Skip cache for recursive tool calls where prompt is None
+            return await func(self, strategy, prompt)
+
         strategy_name = strategy.__class__.__name__
         key_search = f"{strategy_name}_{prompt.lower().strip()}"
         # Existing prompt in cache
