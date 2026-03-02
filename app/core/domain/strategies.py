@@ -8,10 +8,10 @@ class IAStrategy(ABC):
 class StrategyFastModel(IAStrategy):
     def set_payload(self, message: str)-> dict:
         return {
-            "model": "meta-llama/llama-3-8b-instruct",
+            "model": "minimax/minimax-m2.5",
             "temperature": 0.8,
             "messages": [
-                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "system", "content": "You are a helpful assistant. your name is minimax"},
                 {"role": "user", "content": message}
             ]
 
@@ -21,10 +21,10 @@ class StrategyCodeModel(IAStrategy):
     def set_payload(self, message: str)-> dict:
         return {
 
-            "model": "anthropic/claude-3.5-sonnet",
+            "model": "minimax/minimax-m2.5",
             "temperature": 0.1,
             "messages": [
-                {"role": "system", "content": "You are a senior engineer. Only respond with clean code."},
+                {"role": "system", "content": "You are a senior engineer. Only respond with clean code. your name is minimax"},
                 {"role": "user", "content": message}
             ]
         }

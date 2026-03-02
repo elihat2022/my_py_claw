@@ -7,6 +7,10 @@ class IAProviderPort(ABC):
     @abstractmethod
     def subscribe(self, observer: TokenObserver):
         pass
+    @abstractmethod
+    def unsubscribe(self, observer: TokenObserver):
+        """Removes an observer to prevent memory leaks."""
+        pass
 
     @abstractmethod
     async def generate_response_stream(self, strategy: IAStrategy, prompt: str):

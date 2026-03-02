@@ -28,6 +28,10 @@ class OpenRouterClient(IAProviderPort):
     def subscribe(self, observer: TokenObserver):
         if observer not in self._subscribers:
             self._subscribers.append(observer)
+            
+    def unsubscribe(self, observer: TokenObserver):
+        if observer in self._subscribers:
+            self._subscribers.remove(observer)
 
     async def notify(self, token: str):
         for observer in self._subscribers:

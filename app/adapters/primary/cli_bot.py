@@ -1,5 +1,5 @@
 import asyncio
-from app.infra.client import OpenRouterClient
+from app.adapters.secondary.ai_clients.openrouter import OpenRouterClient
 from app.core.domain.factory import IAStrategyFactory
 from app.core.ports.observers_port import ConsoleTokenObserver
 
